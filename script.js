@@ -1,6 +1,7 @@
 
 let computer = false
-const gameSpace = document.querySelectorAll('.game-space')
+const gameSpace = document.querySelectorAll('.game-space');
+let divWinner = document.querySelector(".winner");
 let turn = 1;
 let x = [];
 let o = [];
@@ -20,17 +21,35 @@ let print = (event, valuePrint) => {
     event.classList.add(`${valuePrint}`);
 }
 
-let printWiner = (winner) => {
+let printWinner = (winner) => {
     turn = null;
-    console.log(`gano ${winner}`);
+    divWinner.classList.remove('none');
+    let showingWinner = document.createElement('p');
+    showingWinner.classList.add('showing-winner')
+    showingWinner.innerHTML = winner;
+
+
+    divWinner.appendChild(showingWinner)
+}
+
+
+
+
+let reset = () => {
+    turn = 1;
+    x = [];
+    o = [];
+    gameSpace.forEach(e => {
+        e.classList.remove('x')
+        e.classList.remove('o')
+    })
+    divWinner.classList.add('none');
+    let deleteWinner = document.querySelector('.showing-winner')
+    divWinner.removeChild(deleteWinner)
+
+
 
 }
-// window.addEventListener('click', () => {
-//     gameSpace.forEach(e => {
-//         e.classList.remove('x')
-//         e.classList.remove('o')
-//     })
-// })
 
 const gameLogic = (event) => {
 
@@ -40,20 +59,20 @@ const gameLogic = (event) => {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWiner("x") : computerTurn();
-
+        winner(x) ? printWinner(`WINNER<br>x`) : computerTurn(); null;
+        turn += 1
     }
     else if (computer === false && turn === 1 && testOX === false) {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWiner("x") : turn += 1;;
+        winner(x) ? printWinner(`WINNER<br>x`) : turn += 1;
 
     }
     else if (turn === 2 && testOX === false) {
         print(event.target, "o");
         o.push(parseInt(event.target.attributes.id.value));
-        winner(o) ? printWiner("o") : turn -= 1;
+        winner(o) ? printWinner(`WINNER<br>o`) : turn -= 1;
 
     }
 }
@@ -69,7 +88,11 @@ const winner = (arr) => {
     } else if (arr.includes(0) && arr.includes(4) && arr.includes(8) || arr.includes(2) && arr.includes(4) && arr.includes(6)) {
 
         return true
+    } else if ((x.length + o.length) >= gameSpace.length) {
+
+        printWinner("nadie gano")
     }
+
     return false
 
 }
@@ -84,13 +107,17 @@ let computerTurn = () => {
         if ((/[o,x]/.test(randomBoxValue.attributes.class.value)) === false) {
             print(randomBoxValue, "o");
             o.push(parseInt(randomBoxValue.attributes.id.value));
-            winner(o) ? printWiner("o") : null;
+            winner(o) ? printWinner("o") : null;
+            turn -= 1;
             return
         }
     }
 
 
 }
+
+
+
 
 
 
