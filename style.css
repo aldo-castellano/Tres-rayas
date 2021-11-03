@@ -7,8 +7,21 @@ html {
     /* font-size: 62.5%; */
 }
 
+body {
+    margin: 0;
+    text-align: center;
+}
+
 .none {
     display: none;
+}
+
+main {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
 }
 
 .game-container {
@@ -38,4 +51,22 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center
+}
+
+.winner {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #00000083;
+}
+
+.showing-winner {
+    color: orange;
+    font-size: 10rem;
+    text-align: center;
+}
+
+.none {
+    display: none;
 }
