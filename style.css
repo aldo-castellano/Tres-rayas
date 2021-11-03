@@ -1,0 +1,41 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    /* font-size: 62.5%; */
+}
+
+.none {
+    display: none;
+}
+
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 30rem;
+}
+
+.game-space {
+    background-color: aqua;
+    min-height: 10rem;
+    min-width: 10rem;
+    width: 10rem;
+    height: 10rem;
+    border: .5rem solid #000000;
+}
+
+.x {
+    background-image: url(img/times-solid.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+.o {
+    background-image: url(img/icons8-o-100.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center
+}
