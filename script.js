@@ -66,13 +66,13 @@ const gameLogic = (event) => {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner(`WINNER<br>x`) : turn += 1;
+        winner(x) ? printWinner(`WINNER<br>X`) : turn += 1;
 
     }
     else if (turn === 2 && testOX === false) {
         print(event.target, "o");
         o.push(parseInt(event.target.attributes.id.value));
-        winner(o) ? printWinner(`WINNER<br>o`) : turn -= 1;
+        winner(o) ? printWinner(`WINNER<br>O`) : turn -= 1;
 
     }
 }
@@ -90,7 +90,7 @@ const winner = (arr) => {
         return true
     } else if ((x.length + o.length) >= gameSpace.length) {
 
-        printWinner("nadie gano")
+        printWinner("NADIE GANO")
     }
 
     return false
@@ -101,13 +101,13 @@ const winner = (arr) => {
 let computerTurn = () => {
 
     for (let i = 0; i < gameSpace.length; i++) {
-        let random = Math.floor((Math.random() * gameSpace.length - 1) + 0);
+        let random = Math.floor((Math.random() * gameSpace.length) + 0);
         let randomBoxValue = gameSpace[random];
 
         if ((/[o,x]/.test(randomBoxValue.attributes.class.value)) === false) {
             print(randomBoxValue, "o");
             o.push(parseInt(randomBoxValue.attributes.id.value));
-            winner(o) ? printWinner("o") : null;
+            winner(o) ? printWinner(`WINNER<br>O`) : null;
             turn -= 1;
             return
         }
