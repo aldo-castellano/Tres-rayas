@@ -5,12 +5,11 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
+    font-family: 'Press Start 2P', 'sans-serif';
 }
 
 body {
     margin: 0;
-    text-align: center;
-    font-family: 'Press Start 2P', cursive;
     background-color: #000000;
 }
 
@@ -52,7 +51,7 @@ main {
 .players a {
     text-decoration: none;
     color: #f1bd13;
-    font-size: 4rem;
+    font-size: 3rem;
     border: 1rem double #f1bd13;
     border-radius: 10rem;
     padding: 1.5rem;
@@ -66,11 +65,13 @@ main {
 }
 
 .game-space {
-    /* background-color: aqua; */
     padding: .5rem;
     border: .3rem solid #080bba;
     margin: .4rem;
     border-radius: 1rem;
+    -webkit-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
+    -moz-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
+    box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
 }
 
 .game-container {
@@ -82,6 +83,9 @@ main {
     border: .3rem solid #080bba;
     border-radius: 1.5rem;
     padding: .3rem;
+    -webkit-box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
+    -moz-box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
+    box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
 }
 
 .x {
