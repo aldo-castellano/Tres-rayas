@@ -24,9 +24,11 @@ let print = (event, valuePrint) => {
 let printWinner = (winner) => {
     turn = null;
     divWinner.classList.remove('none');
-    let showingWinner = document.createElement('p');
+    let showingWinner = document.createElement('div');
     showingWinner.classList.add('showing-winner')
-    showingWinner.innerHTML = winner;
+    showingWinner.classList.add(`${winner}`)
+
+    showingWinner.innerHTML = `WINNER`;
 
 
     divWinner.appendChild(showingWinner)
@@ -59,20 +61,20 @@ const gameLogic = (event) => {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner(`WINNER<br>x`) : computerTurn(); null;
+        winner(x) ? printWinner("x") : computerTurn(); null;
         turn += 1
     }
     else if (computer === false && turn === 1 && testOX === false) {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner(`WINNER<br>X`) : turn += 1;
+        winner(x) ? printWinner("o") : turn += 1;
 
     }
     else if (turn === 2 && testOX === false) {
         print(event.target, "o");
         o.push(parseInt(event.target.attributes.id.value));
-        winner(o) ? printWinner(`WINNER<br>O`) : turn -= 1;
+        winner(o) ? printWinner("o") : turn -= 1;
 
     }
 }
@@ -107,7 +109,7 @@ let computerTurn = () => {
         if ((/[o,x]/.test(randomBoxValue.attributes.class.value)) === false) {
             print(randomBoxValue, "o");
             o.push(parseInt(randomBoxValue.attributes.id.value));
-            winner(o) ? printWinner(`WINNER<br>O`) : null;
+            winner(o) ? printWinner("o") : null;
             turn -= 1;
             return
         }
