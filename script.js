@@ -68,10 +68,10 @@ const gameLogic = (event) => {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner("o") : turn += 1;
+        winner(x) ? printWinner("x") : turn += 1;
 
     }
-    else if (turn === 2 && testOX === false) {
+    else if (computer === false && turn === 2 && testOX === false) {
         print(event.target, "o");
         o.push(parseInt(event.target.attributes.id.value));
         winner(o) ? printWinner("o") : turn -= 1;
