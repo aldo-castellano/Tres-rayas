@@ -21,14 +21,14 @@ let print = (event, valuePrint) => {
     event.classList.add(`${valuePrint}`);
 }
 
-let printWinner = (winner) => {
+let printWinner = (winner = "", nobadyWin = "") => {
     turn = null;
     divWinner.classList.remove('none');
     let showingWinner = document.createElement('div');
     showingWinner.classList.add('showing-winner')
     showingWinner.classList.add(`${winner}`)
 
-    showingWinner.innerHTML = `WINNER`;
+    showingWinner.innerHTML = `${nobadyWin}`;
 
 
     divWinner.appendChild(showingWinner)
@@ -61,20 +61,20 @@ const gameLogic = (event) => {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner("x") : computerTurn(); null;
+        winner(x) ? printWinner("x", "WINNER") : computerTurn(); null;
         turn += 1
     }
     else if (computer === false && turn === 1 && testOX === false) {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner("x") : turn += 1;
+        winner(x) ? printWinner("x", "WINNER") : turn += 1;
 
     }
     else if (computer === false && turn === 2 && testOX === false) {
         print(event.target, "o");
         o.push(parseInt(event.target.attributes.id.value));
-        winner(o) ? printWinner("o") : turn -= 1;
+        winner(o) ? printWinner("o", "WINNER") : turn -= 1;
 
     }
 }
@@ -91,8 +91,8 @@ const winner = (arr) => {
 
         return true
     } else if ((x.length + o.length) >= gameSpace.length) {
-
-        printWinner("NADIE GANO")
+        // const nobadyWin = document.querySelector('.showing-winner')
+        printWinner("hola", "NADIE GANO")
     }
 
     return false
