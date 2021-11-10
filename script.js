@@ -61,8 +61,8 @@ const gameLogic = (event) => {
 
         print(event.target, "x");
         x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner("x", "WINNER") : computerTurn(); null;
-        turn += 1
+        winner(x) ? printWinner("x", "WINNER") : computerTurn();
+
     }
     else if (computer === false && turn === 1 && testOX === false) {
 
@@ -103,14 +103,14 @@ const winner = (arr) => {
 let computerTurn = () => {
 
     for (let i = 0; i < gameSpace.length; i++) {
-        let random = Math.floor((Math.random() * gameSpace.length) + 0);
+        let random = Math.floor((Math.random() * gameSpace.length - 0) + 0);
         let randomBoxValue = gameSpace[random];
 
         if ((/[o,x]/.test(randomBoxValue.attributes.class.value)) === false) {
             print(randomBoxValue, "o");
             o.push(parseInt(randomBoxValue.attributes.id.value));
             winner(o) ? printWinner("o") : null;
-            turn -= 1;
+
             return
         }
     }
