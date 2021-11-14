@@ -14,7 +14,7 @@ let player = event => {
     const audio = document.querySelector(".audio");
 
     start.classList.add("none");
-    // start.removeChild(audio);
+    start.removeChild(audio);
 
 
     const playerOne = document.querySelector(".playerOne");
