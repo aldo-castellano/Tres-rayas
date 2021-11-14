@@ -7,6 +7,7 @@ let x = [];
 let o = [];
 
 
+
 let player = event => {
 
     event.preventDefault();
