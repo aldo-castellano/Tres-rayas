@@ -6,6 +6,7 @@ let turn = 1;
 let x = [];
 let o = [];
 
+
 let player = event => {
 
     event.preventDefault();
@@ -45,10 +46,10 @@ let printWinner = (winner = null, nobadyWin = "") => {
     showingWinner.classList.add(`${winner}`)
     showingWinner.innerHTML = `${nobadyWin}`;
     divWinner.appendChild(showingWinner)
-    if (winner.includes('x')) {
+    if (winner === 'x') {
 
         showingWinner.innerHTML = `<p>${nobadyWin}</p> <div class="pac-man no-index"><audio src="./audio/pacman_eatghost.wav" autoplay=true ></div>`
-    } else if (winner.includes('o')) {
+    } else if (winner === 'o') {
         showingWinner.innerHTML = `<p>${nobadyWin} <div class="ghost no-index"><div class="eyes "></div><div class="pet"></div></div><audio src="./audio/pacman_death.wav" autoplay=true >`
     }
 }
