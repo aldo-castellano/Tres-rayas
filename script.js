@@ -1,4 +1,4 @@
-
+"use strict"
 let computer = false
 const gameSpace = document.querySelectorAll('.game-space');
 let divWinner = document.querySelector(".winner");
@@ -8,30 +8,49 @@ let o = [];
 
 let player = event => {
 
-    event.preventDefault()
-
+    event.preventDefault();
     document.querySelector(".none").classList.remove("none");
-    document.querySelector(".start").classList.add("none");
+    const start = document.querySelector(".start");
+    const audio = document.querySelector(".audio");
+
+    start.classList.add("none");
+    // start.removeChild(audio);
+
+
     const playerOne = document.querySelector(".playerOne");
+
+
 
     ((playerOne === event.target) ? computer = true : null);
 
 }
 let print = (event, valuePrint) => {
     event.classList.add(`${valuePrint}`);
+    if (valuePrint.includes('x')) {
+        let pacMan = document.createElement('div')
+        pacMan.classList.add('pac-man');
+        event.appendChild(pacMan)
+        pacMan.innerHTML = `<audio src="./audio/pacman_chomp.wav" autoplay=true ></audio>`
+    } else if (valuePrint.includes('o')) {
+        event.innerHTML = '<div class="ghost"><div class="eyes "></div><div class="pet"></div></div><audio src="./audio/pacman_ghost.wav" autoplay=true >'
+    }
+
 }
 
-let printWinner = (winner = "", nobadyWin = "") => {
+let printWinner = (winner = null, nobadyWin = "") => {
     turn = null;
     divWinner.classList.remove('none');
     let showingWinner = document.createElement('div');
     showingWinner.classList.add('showing-winner')
     showingWinner.classList.add(`${winner}`)
-
     showingWinner.innerHTML = `${nobadyWin}`;
-
-
     divWinner.appendChild(showingWinner)
+    if (winner.includes('x')) {
+
+        showingWinner.innerHTML = `<p>${nobadyWin}</p> <div class="pac-man no-index"><audio src="./audio/pacman_eatghost.wav" autoplay=true ></div>`
+    } else if (winner.includes('o')) {
+        showingWinner.innerHTML = `<p>${nobadyWin} <div class="ghost no-index"><div class="eyes "></div><div class="pet"></div></div><audio src="./audio/pacman_death.wav" autoplay=true >`
+    }
 }
 
 
@@ -44,6 +63,7 @@ let reset = () => {
     gameSpace.forEach(e => {
         e.classList.remove('x')
         e.classList.remove('o')
+        e.innerHTML = '';
     })
     divWinner.classList.add('none');
     let deleteWinner = document.querySelector('.showing-winner')
@@ -91,7 +111,7 @@ const winner = (arr) => {
 
         return true
     } else if ((x.length + o.length) >= gameSpace.length) {
-        // const nobadyWin = document.querySelector('.showing-winner')
+
         printWinner("hola", "NADIE GANO")
     }
 

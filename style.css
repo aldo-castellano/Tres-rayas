@@ -55,6 +55,9 @@ main {
     border: 1rem double #f1bd13;
     border-radius: 10rem;
     padding: 1.5rem;
+    -webkit-box-shadow: 0px 0px 12px 2px #f1bd13;
+    -moz-box-shadow: 0px 0px 12px 2px #f1bd13;
+    box-shadow: 0px 0px 12px 2px #f1bd13;
 }
 
 .game {
@@ -62,16 +65,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.game-space {
-    padding: .5rem;
-    border: .3rem solid #080bba;
-    margin: .4rem;
-    border-radius: 1rem;
-    -webkit-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
-    -moz-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
-    box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
 }
 
 .game-container {
@@ -88,18 +81,137 @@ main {
     box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
 }
 
-.x {
-    background-image: url(img/381603_pacman_icon.svg);
-    /* background-size: cover; */
-    background-repeat: no-repeat;
-    background-position: center
+.game-space {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    border: .3rem solid #080bba;
+    margin: .4rem;
+    border-radius: 1rem;
+    -webkit-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
+    -moz-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
+    box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
 }
 
-.o {
-    background-image: url(img/381615_ghost_pacman_icon.svg);
-    /* background-size: cover; */
-    background-repeat: no-repeat;
-    background-position: center
+.pac-man {
+    position: absolute;
+    z-index: -100;
+    right: 50%;
+    bottom: 50%;
+    height: 3rem;
+    width: 3rem;
+}
+
+.pac-man::after, .pac-man::before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    position: absolute;
+    border: solid 3rem yellow;
+    border-radius: 50%;
+    border-right-color: transparent;
+    /* animation-duration: .4s; */
+    /* animation-iteration-count: infinite; */
+}
+
+.pac-man::after {
+    animation: animacionUno .6s linear infinite;
+    /* margin-left: 8rem; */
+    /* border-bottom-color: transparent; */
+}
+
+.pac-man::before {
+    animation: animacionDos .6s linear infinite;
+    /* border-top-color: transparent; */
+}
+
+@keyframes animacionDos {
+    50% {
+        transform: rotate(-50deg);
+    }
+}
+
+@keyframes animacionUno {
+    50% {
+        transform: rotate(50deg);
+    }
+}
+
+.ghost {
+    position: absolute;
+    height: 6rem;
+    width: 6rem;
+    z-index: -100;
+    display: block;
+    mask-image: url(../img/381615_ghost_pacman_icon.svg);
+    -webkit-mask-image: url(../img/381615_ghost_pacman_icon.svg);
+    background-color: rgb(255, 0, 255);
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    animation: blink 1s ease infinite;
+}
+
+@keyframes blink {
+    50% {
+        background-color: rgb(2, 49, 255);
+    }
+}
+
+.eyes::after, .eyes::before {
+    content: "";
+    position: absolute;
+    border-radius: 50% 50%;
+    height: 1.8rem;
+    width: 1.5rem;
+    top: 16px;
+    background-color: #ffffff;
+}
+
+.eyes::after {
+    left: 33px;
+}
+
+.eyes::before {
+    right: 33px;
+}
+
+.pet::after, .pet::before {
+    content: "";
+    position: absolute;
+    border-radius: 50% 50%;
+    height: .7rem;
+    width: .7rem;
+    top: 23px;
+    background-color: #000000;
+}
+
+.pet::after {
+    left: 34px;
+    animation: pet-one .6s linear infinite;
+}
+
+.pet::before {
+    right: 34px;
+    animation: pet-two .6s linear infinite;
+}
+
+@keyframes pet-two {
+    50% {
+        right: 40px;
+    }
+}
+
+@keyframes pet-one {
+    50% {
+        left: 40px;
+    }
 }
 
 .reset-game {
@@ -109,6 +221,9 @@ main {
     border: 1rem double #f1bd13;
     border-radius: 10rem;
     padding: 1.5rem;
+    -webkit-box-shadow: 0px 0px 12px 2px #f1bd13;
+    -moz-box-shadow: 0px 0px 12px 2px #f1bd13;
+    box-shadow: 0px 0px 12px 2px #f1bd13;
 }
 
 .winner {
@@ -123,10 +238,21 @@ main {
 }
 
 .showing-winner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+    align-items: center;
     color: #f1bd13;
     font-size: 6rem;
-    text-align: center;
-    height: 50%;
+}
+
+.no-index {
+    z-index: 0;
+    bottom: 50%;
+    right: inherit;
+    height: 6rem;
+    width: 6rem;
 }
 
 .none {
