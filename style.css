@@ -82,6 +82,7 @@ main {
 }
 
 .game-space {
+    cursor: pointer;
     position: relative;
     display: inline-flex;
     justify-content: center;
