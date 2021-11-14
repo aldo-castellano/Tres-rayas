@@ -7,6 +7,7 @@ let x = [];
 let o = [];
 
 
+
 let player = event => {
 
     event.preventDefault();
@@ -15,7 +16,8 @@ let player = event => {
     const audio = document.querySelector(".audio");
 
     start.classList.add("none");
-    start.removeChild(audio);
+    audio.play();
+    audio.volume = 0.50;
 
 
     const playerOne = document.querySelector(".playerOne");
@@ -130,7 +132,7 @@ let computerTurn = () => {
         if ((/[o,x]/.test(randomBoxValue.attributes.class.value)) === false) {
             print(randomBoxValue, "o");
             o.push(parseInt(randomBoxValue.attributes.id.value));
-            winner(o) ? printWinner("o") : null;
+            winner(o) ? printWinner("o", "WINNER") : null;
 
             return
         }

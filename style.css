@@ -48,7 +48,7 @@ main {
     row-gap: 4rem;
 }
 
-.players a {
+.players a, .btn-audio {
     text-decoration: none;
     color: #f1bd13;
     font-size: 3rem;
