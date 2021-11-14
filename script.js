@@ -40,7 +40,7 @@ let print = (event, valuePrint) => {
 }
 
 let printWinner = (winner = null, nobadyWin = "") => {
-    audio.pause();
+
     turn = null;
     divWinner.classList.remove('none');
     let showingWinner = document.createElement('div');
