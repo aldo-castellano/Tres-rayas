@@ -6,7 +6,7 @@ let turn = 1;
 let x = [];
 let o = [];
 
-const audio = document.querySelector(".audio");
+
 
 let player = event => {
 
@@ -16,8 +16,7 @@ let player = event => {
 
 
     start.classList.add("none");
-    audio.play();
-    audio.volume = 0.50;
+
 
 
     const playerOne = document.querySelector(".playerOne");
@@ -75,7 +74,7 @@ let reset = () => {
     divWinner.classList.add('none');
     let deleteWinner = document.querySelector('.showing-winner')
     divWinner.removeChild(deleteWinner)
-    audio.play();
+
 
 
 
