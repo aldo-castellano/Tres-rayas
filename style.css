@@ -241,8 +241,9 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 60%;
     align-items: center;
+    text-align: center;
+    height: 60%;
     color: #f1bd13;
     font-size: 6rem;
 }
