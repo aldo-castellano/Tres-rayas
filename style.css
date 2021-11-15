@@ -55,8 +55,6 @@ main {
     border: 1rem double #f1bd13;
     border-radius: 10rem;
     padding: 1.5rem;
-    -webkit-box-shadow: 0px 0px 12px 2px #f1bd13;
-    -moz-box-shadow: 0px 0px 12px 2px #f1bd13;
     box-shadow: 0px 0px 12px 2px #f1bd13;
 }
 
@@ -76,8 +74,6 @@ main {
     border: .3rem solid #080bba;
     border-radius: 1.5rem;
     padding: .3rem;
-    -webkit-box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
-    -moz-box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
     box-shadow: 0px 0px 17px 4px rgba(8, 11, 186, 1);
 }
 
@@ -91,8 +87,6 @@ main {
     border: .3rem solid #080bba;
     margin: .4rem;
     border-radius: 1rem;
-    -webkit-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
-    -moz-box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
     box-shadow: inset 0px 0px 12px 2px rgba(8, 11, 186, 1);
 }
 
@@ -117,19 +111,33 @@ main {
 }
 
 .pac-man::after {
+    -webkit-animation: animacionUno .6s linear infinite;
     animation: animacionUno .6s linear infinite;
     /* margin-left: 8rem; */
     /* border-bottom-color: transparent; */
 }
 
 .pac-man::before {
+    -webkit-animation: animacionDos .6s linear infinite;
     animation: animacionDos .6s linear infinite;
     /* border-top-color: transparent; */
+}
+
+@-webkit-keyframes animacionDos {
+    50% {
+        transform: rotate(-50deg);
+    }
 }
 
 @keyframes animacionDos {
     50% {
         transform: rotate(-50deg);
+    }
+}
+
+@-webkit-keyframes animacionUno {
+    50% {
+        transform: rotate(50deg);
     }
 }
 
@@ -154,7 +162,14 @@ main {
     -webkit-mask-position: center;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
+    -webkit-animation: blink 1s ease infinite;
     animation: blink 1s ease infinite;
+}
+
+@-webkit-keyframes blink {
+    50% {
+        background-color: rgb(2, 49, 255);
+    }
 }
 
 @keyframes blink {
@@ -193,17 +208,31 @@ main {
 
 .pet::after {
     left: 34px;
+    -webkit-animation: pet-one .6s linear infinite;
     animation: pet-one .6s linear infinite;
 }
 
 .pet::before {
     right: 34px;
+    -webkit-animation: pet-two .6s linear infinite;
     animation: pet-two .6s linear infinite;
+}
+
+@-webkit-keyframes pet-two {
+    50% {
+        right: 40px;
+    }
 }
 
 @keyframes pet-two {
     50% {
         right: 40px;
+    }
+}
+
+@-webkit-keyframes pet-one {
+    50% {
+        left: 40px;
     }
 }
 
@@ -220,8 +249,6 @@ main {
     border: 1rem double #f1bd13;
     border-radius: 10rem;
     padding: 1.5rem;
-    -webkit-box-shadow: 0px 0px 12px 2px #f1bd13;
-    -moz-box-shadow: 0px 0px 12px 2px #f1bd13;
     box-shadow: 0px 0px 12px 2px #f1bd13;
 }
 
