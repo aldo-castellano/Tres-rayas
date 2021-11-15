@@ -16,10 +16,7 @@ body {
 .container {
     margin: 0 auto;
     width: 90%;
-}
-
-.none {
-    display: none;
+    max-width: 1400px;
 }
 
 main {
@@ -113,14 +110,11 @@ main {
 .pac-man::after {
     -webkit-animation: animacionUno .6s linear infinite;
     animation: animacionUno .6s linear infinite;
-    /* margin-left: 8rem; */
-    /* border-bottom-color: transparent; */
 }
 
 .pac-man::before {
     -webkit-animation: animacionDos .6s linear infinite;
     animation: animacionDos .6s linear infinite;
-    /* border-top-color: transparent; */
 }
 
 @-webkit-keyframes animacionDos {
