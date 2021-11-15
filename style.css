@@ -48,7 +48,7 @@ main {
     row-gap: 4rem;
 }
 
-.players a, .btn-audio {
+.playerOne, .platerTwo {
     text-decoration: none;
     color: #f1bd13;
     font-size: 3rem;
@@ -114,8 +114,6 @@ main {
     border: solid 3rem yellow;
     border-radius: 50%;
     border-right-color: transparent;
-    /* animation-duration: .4s; */
-    /* animation-iteration-count: infinite; */
 }
 
 .pac-man::after {
@@ -147,8 +145,8 @@ main {
     width: 6rem;
     z-index: -100;
     display: block;
-    mask-image: url(../img/381615_ghost_pacman_icon.svg);
-    -webkit-mask-image: url(../img/381615_ghost_pacman_icon.svg);
+    mask-image: url(../img/ghost_pacman_icon.svg);
+    -webkit-mask-image: url(../img/ghost_pacman_icon.svg);
     background-color: rgb(255, 0, 255);
     mask-size: contain;
     -webkit-mask-size: contain;
