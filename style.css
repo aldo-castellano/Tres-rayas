@@ -144,10 +144,10 @@ main {
 .ghost {
     position: absolute;
     height: 6rem;
-    width: 6rem;
+    width: 4.5rem;
     z-index: -100;
     display: block;
-    mask-image: url(../img/ghost_pacman_icon.svg);
+    /* mask-image: url(../img/ghost_pacman_icon.svg);
     -webkit-mask-image: url(../img/ghost_pacman_icon.svg);
     background-color: rgb(255, 0, 255);
     mask-size: contain;
@@ -155,7 +155,9 @@ main {
     mask-position: center;
     -webkit-mask-position: center;
     mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat; */
+    background-color: violet;
+    border-radius: 40% 40% 0 0;
     -webkit-animation: blink 1s ease infinite;
     animation: blink 1s ease infinite;
 }
@@ -183,11 +185,11 @@ main {
 }
 
 .eyes::after {
-    left: 33px;
+    left: 26px;
 }
 
 .eyes::before {
-    right: 33px;
+    right: 26px;
 }
 
 .pet::after, .pet::before {
@@ -196,43 +198,43 @@ main {
     border-radius: 50% 50%;
     height: .7rem;
     width: .7rem;
-    top: 23px;
+    top: 22px;
     background-color: #000000;
 }
 
 .pet::after {
-    left: 34px;
+    left: 5px;
     -webkit-animation: pet-one .6s linear infinite;
     animation: pet-one .6s linear infinite;
 }
 
 .pet::before {
-    right: 34px;
+    right: 5px;
     -webkit-animation: pet-two .6s linear infinite;
     animation: pet-two .6s linear infinite;
 }
 
 @-webkit-keyframes pet-two {
     50% {
-        right: 40px;
+        right: 11px;
     }
 }
 
 @keyframes pet-two {
     50% {
-        right: 40px;
+        right: 11px;
     }
 }
 
 @-webkit-keyframes pet-one {
     50% {
-        left: 40px;
+        left: 11px;
     }
 }
 
 @keyframes pet-one {
     50% {
-        left: 40px;
+        left: 11px;
     }
 }
 
