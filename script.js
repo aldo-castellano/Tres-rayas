@@ -3,8 +3,8 @@ let computer = false;
 const gameSpace = document.querySelectorAll(".game-space");
 let divWinner = document.querySelector(".winner");
 let turn = 1;
-let x = [];
-let o = [];
+let pacMan = [];
+let ghost = [];
 
 /* add css class with display none to the player number selection page and remove it from the game board. select the number of players
 *@param event{object}
@@ -57,8 +57,8 @@ let computerTurn = () => {
         if ((/[o,x]/.test(randomBoxValue.attributes.class.value)) === false) {
 
             print(randomBoxValue, "o");
-            o.push(parseInt(randomBoxValue.attributes.id.value));
-            winner(o) ? printWinner("o", "WINNER") : null;
+            ghost.push(parseInt(randomBoxValue.attributes.id.value));
+            winner(ghost) ? printWinner("o", "WINNER") : null;
 
             return;
         }
@@ -76,21 +76,21 @@ const gameLogic = (event) => {
     if (computer === true && testOX === false && turn === 1) {
 
         print(event.target, "x");
-        x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner("x", "WINNER") : computerTurn();
+        pacMan.push(parseInt(event.target.attributes.id.value));
+        winner(pacMan) ? printWinner("x", "WINNER") : computerTurn();
 
     }
     else if (computer === false && turn === 1 && testOX === false) {
 
         print(event.target, "x");
-        x.push(parseInt(event.target.attributes.id.value));
-        winner(x) ? printWinner("x", "WINNER") : turn++;
+        pacMan.push(parseInt(event.target.attributes.id.value));
+        winner(pacMan) ? printWinner("x", "WINNER") : turn++;
 
     }
     else if (computer === false && turn === 2 && testOX === false) {
         print(event.target, "o");
-        o.push(parseInt(event.target.attributes.id.value));
-        winner(o) ? printWinner("o", "WINNER") : turn--;
+        ghost.push(parseInt(event.target.attributes.id.value));
+        winner(ghost) ? printWinner("o", "WINNER") : turn--;
 
     }
 }
@@ -98,8 +98,8 @@ const gameLogic = (event) => {
 /* function of an event that resets the entire game board*/
 let reset = () => {
     turn = 1;
-    x = [];
-    o = [];
+    pacMan = [];
+    ghost = [];
     gameSpace.forEach(e => {
         e.classList.remove("x");
         e.classList.remove("o");
@@ -148,7 +148,7 @@ const winner = (arr) => {
     } else if (arr.includes(0) && arr.includes(4) && arr.includes(8) || arr.includes(2) && arr.includes(4) && arr.includes(6)) {
 
         return true;
-    } else if ((x.length + o.length) >= gameSpace.length) {
+    } else if ((pacMan.length + ghost.length) >= gameSpace.length) {
 
         printWinner("no-winner", "NADIE GANO");
     }
